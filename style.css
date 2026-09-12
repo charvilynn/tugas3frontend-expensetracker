@@ -1,0 +1,466 @@
+/* bagian pewarnaan dan variabel tema */
+:root {
+  --bg-page: #0b0c0e;
+  --surface-card: #141518;
+  --surface-inner: #191a1f;
+  --border-subtle: #24252a;
+  --border-focus: #1ea7ff;
+
+  --text-primary: #ffffff;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+
+  --accent-cyan: #1ea7ff;
+  --accent-cyan-hover: #38bdf8;
+  --accent-cyan-glow: rgba(30, 167, 255, 0.2);
+
+  --accent-green: #4ade80;
+  --accent-danger: #ff6b6b;
+  --accent-danger-bg: rgba(255, 107, 107, 0.12);
+
+  --font-main: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* reset tampilan dasar */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+  line-height: 1.5;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 2.5rem 1rem;
+}
+
+/* hilangkan panah spinner pada input angka */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+
+/* layout utama dan header */
+.app-container {
+  max-width: 680px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.25rem 0;
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.app-header h1 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+.brand-subtitle {
+  font-size: 0.825rem;
+  color: var(--text-muted);
+}
+
+.student-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background-color: var(--surface-card);
+  border: 1px solid var(--border-subtle);
+  padding: 0.35rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.825rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.status-indicator {
+  width: 8px;
+  height: 8px;
+  background-color: var(--accent-green);
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(74, 222, 128, 0.4);
+}
+
+/* kartu ringkasan total pengeluaran */
+.overview-banner {
+  background: linear-gradient(135deg, #141518 0%, #1a1c22 100%);
+  border: 1px solid var(--border-subtle);
+  border-radius: 16px;
+  padding: 1.75rem;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.overview-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.overview-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.badge-count {
+  background-color: rgba(30, 167, 255, 0.12);
+  color: var(--accent-cyan);
+  border: 1px solid rgba(30, 167, 255, 0.25);
+  padding: 0.25rem 0.65rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.overview-nominal {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+
+/* formulir input pengeluaran */
+.input-card {
+  background-color: var(--surface-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 14px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 20px -4px rgba(0, 0, 0, 0.35);
+}
+
+.card-heading {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 1.25rem;
+}
+
+/* tata letak input form dengan grid */
+.form-row {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.input-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.input-field label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.input-field input[type="text"] {
+  font-family: inherit;
+  font-size: 0.95rem;
+  padding: 0.65rem 0.85rem;
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  background-color: var(--surface-inner);
+  color: var(--text-primary);
+  min-height: 44px;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.input-field input[type="text"]:focus {
+  outline: none;
+  border-color: var(--border-focus);
+  box-shadow: 0 0 0 3px var(--accent-cyan-glow);
+}
+
+/* custom input nominal dengan prefix rp */
+.currency-box {
+  display: flex;
+  align-items: stretch;
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  background-color: var(--surface-inner);
+  overflow: hidden;
+  min-height: 44px;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.currency-box:focus-within {
+  border-color: var(--border-focus);
+  box-shadow: 0 0 0 3px var(--accent-cyan-glow);
+}
+
+.currency-tag {
+  background-color: #202227;
+  color: var(--accent-cyan);
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0 0.85rem;
+  display: flex;
+  align-items: center;
+  border-right: 1px solid var(--border-subtle);
+  user-select: none;
+}
+
+.currency-box input[type="number"] {
+  flex: 1;
+  font-family: inherit;
+  font-size: 0.95rem;
+  border: none;
+  padding: 0.65rem 0.85rem;
+  color: var(--text-primary);
+  background: transparent;
+  width: 100%;
+}
+
+.currency-box input[type="number"]:focus {
+  outline: none;
+}
+
+/* tampilan notifikasi error validasi */
+.form-error {
+  display: none;
+  font-size: 0.85rem;
+  color: var(--accent-danger);
+  background-color: var(--accent-danger-bg);
+  border: 1px solid rgba(255, 107, 107, 0.25);
+  padding: 0.6rem 0.85rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.form-error.visible {
+  display: block;
+}
+
+/* styling tombol simpan pengeluaran */
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn-save {
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 700;
+  background-color: var(--accent-cyan);
+  color: #0b0c0e;
+  padding: 0.65rem 1.5rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  min-height: 44px;
+  transition: background-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn-save:hover {
+  background-color: var(--accent-cyan-hover);
+  box-shadow: 0 4px 14px rgba(30, 167, 255, 0.35);
+}
+
+.btn-save:focus-visible {
+  outline: 2px solid var(--accent-cyan);
+  outline-offset: 2px;
+}
+
+/* bagian riwayat transaksi */
+.ledger-card {
+  background-color: var(--surface-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 14px;
+  box-shadow: 0 4px 20px -4px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+}
+
+.ledger-header {
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.ledger-header .card-heading {
+  margin-bottom: 0;
+}
+
+/* pesan saat riwayat pengeluaran masih kosong */
+.empty-state {
+  text-align: center;
+  padding: 3rem 1.5rem;
+  color: var(--text-muted);
+}
+
+.empty-illustration {
+  margin-bottom: 0.75rem;
+  color: #334155;
+}
+
+.empty-text-main {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.25rem;
+}
+
+.empty-text-sub {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.expense-list {
+  list-style: none;
+}
+
+/* baris item riwayat transaksi */
+.expense-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid #1a1c22;
+  transition: background-color 0.15s ease;
+}
+
+.expense-item:last-child {
+  border-bottom: none;
+}
+
+.expense-item:hover {
+  background-color: #191b20;
+}
+
+.expense-left {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  min-width: 0;
+  padding-right: 0.75rem;
+}
+
+/* inisial huruf pengeluaran */
+.expense-badge {
+  width: 38px;
+  height: 38px;
+  background-color: #1f2128;
+  color: var(--accent-cyan);
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.95rem;
+  flex-shrink: 0;
+}
+
+.expense-title {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  word-break: break-word;
+}
+
+.expense-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-shrink: 0;
+}
+
+.expense-nominal {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--accent-danger);
+  white-space: nowrap;
+}
+
+/* tombol hapus catatan pengeluaran */
+.btn-delete {
+  background: transparent;
+  color: var(--text-muted);
+  border: 1px solid transparent;
+  padding: 0.35rem 0.65rem;
+  font-size: 0.825rem;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  min-height: 34px;
+  transition: all 0.15s ease;
+}
+
+.btn-delete:hover {
+  color: var(--accent-danger);
+  background-color: var(--accent-danger-bg);
+  border-color: rgba(255, 107, 107, 0.25);
+}
+
+.btn-delete:focus-visible {
+  outline: 2px solid var(--accent-danger);
+  outline-offset: 2px;
+}
+
+/* bagian footer identitas mahasiswa */
+.app-footer {
+  text-align: center;
+  padding: 1rem 0;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+/* responsive untuk layar hp */
+@media (max-width: 600px) {
+  body {
+    padding: 1.25rem 0.75rem;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+  }
+
+  .btn-save {
+    width: 100%;
+  }
+
+  .overview-nominal {
+    font-size: 1.75rem;
+  }
+
+  .expense-item {
+    padding: 0.85rem 1rem;
+  }
+
+  .ledger-header {
+    padding: 1rem;
+  }
+
+  .input-card {
+    padding: 1.25rem 1rem;
+  }
+}

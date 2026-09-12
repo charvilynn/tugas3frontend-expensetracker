@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>535250143 - Catatan Pengeluaran</title>
+  <!-- import font google dan file style css -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="app-container">
+    <!-- bagian header dan identitas -->
+    <header class="app-header">
+      <div class="brand">
+        <h1>Catatan Pengeluaran</h1>
+        <p class="brand-subtitle">Pantau alur belanja harian</p>
+      </div>
+      <div class="student-tag">
+        <span class="status-indicator"></span>
+        <span class="student-id">535250143</span>
+      </div>
+    </header>
+
+    <!-- bagian ringkasan total pengeluaran -->
+    <section class="overview-banner" aria-label="Ringkasan Pengeluaran">
+      <div class="overview-top">
+        <span class="overview-label">Total Akumulasi Pengeluaran</span>
+        <span id="total-count" class="badge-count">0 Transaksi</span>
+      </div>
+      <div class="overview-amount-row">
+        <span id="total-amount" class="overview-nominal">Rp 0</span>
+      </div>
+    </section>
+
+    <!-- bagian formulir input pengeluaran -->
+    <section class="input-card">
+      <h2 class="card-heading">Catat Pengeluaran Baru</h2>
+
+      <form id="expense-form" novalidate>
+        <div class="form-row">
+          <!-- input keterangan pengeluaran -->
+          <div class="input-field field-title">
+            <label for="expense-title">Keterangan</label>
+            <input 
+              type="text" 
+              id="expense-title" 
+              name="title" 
+              autocomplete="off"
+              required
+            >
+          </div>
+
+          <!-- input nominal pengeluaran -->
+          <div class="input-field field-amount">
+            <label for="expense-amount">Nominal</label>
+            <div class="currency-box">
+              <span class="currency-tag">Rp</span>
+              <input 
+                type="number" 
+                id="expense-amount" 
+                name="amount" 
+                min="1" 
+                step="1"
+                required
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- penampung pesan error validasi -->
+        <div id="form-error" class="form-error" role="alert" aria-live="polite"></div>
+
+        <!-- tombol simpan data -->
+        <div class="form-actions">
+          <button type="submit" id="submit-btn" class="btn-save">
+            Simpan Pengeluaran
+          </button>
+        </div>
+      </form>
+    </section>
+
+    <!-- bagian riwayat daftar transaksi -->
+    <section class="ledger-card">
+      <div class="ledger-header">
+        <h2 class="card-heading">Riwayat Transaksi</h2>
+      </div>
+
+      <!-- pesan saat data masih kosong -->
+      <div id="empty-state" class="empty-state">
+        <div class="empty-illustration">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+            <polyline points="14 2 14 8 20 8"/>
+            <line x1="16" x2="8" y1="13" y2="13"/>
+            <line x1="16" x2="8" y1="17" y2="17"/>
+            <line x1="10" x2="8" y1="9" y2="9"/>
+          </svg>
+        </div>
+        <p class="empty-text-main">Belum ada pengeluaran yang dicatat</p>
+        <p class="empty-text-sub">Silakan gunakan formulir di atas untuk menambahkan catatan baru.</p>
+      </div>
+
+      <!-- daftar item pengeluaran yang telah dicatat -->
+      <ul id="expense-list" class="expense-list" aria-live="polite"></ul>
+    </section>
+
+    <!-- bagian footer identitas mahasiswa -->
+    <footer class="app-footer">
+      <p>535250143 Davvin Denielsen Fusta</p>
+    </footer>
+  </div>
+
+  <!-- pemanggilan script javascript -->
+  <script src="app.js"></script>
+</body>
+</html>
