@@ -20,5 +20,7 @@ Cara Kerja:
 - Total nominal dihitung dengan menjumlahkan nominal seluruh item di array, sedangkan jumlah transaksi diambil dari panjang array.
 - Fungsi hapus memanfaatkan event delegation untuk menyaring dan membuang data yang dipilih berdasarkan id, kemudian tampilan diperbarui secara otomatis.
 
+Untuk warna menggunakan referensi pada website TradeWithSuli
+
 Cara Menjalankan:
 Cukup buka file index.html langsung menggunakan browser seperti Google Chrome atau Microsoft Edge.
