@@ -3,7 +3,7 @@
 Nama: Davvin Denielsen Fusta
 NIM: 535250143
 
-Website pencatat pengeluaran sederhana berbasis HTML, CSS, dan JavaScript tanpa backend. Seluruh data dikelola langsung di sisi klien dan tersimpan otomatis di browser menggunakan LocalStorage.
+Website pencatat pengeluaran sederhana berbasis HTML, CSS, dan JavaScript. Seluruh data tersimpan otomatis di browser menggunakan LocalStorage karena tidak memakai Backend
 
 Fitur Utama:
 1. Input keterangan dan nominal pengeluaran melalui form.
